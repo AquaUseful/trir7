@@ -1,14 +1,26 @@
 <?php
 
-namespace api {
-    require('../utils/utils.php');
+namespace api\api {
+    require_once('../utils/utils.php');
+    require_once('handlers/game.php');
+    require_once('handlers/page.php');
 
-    use function utils\request_method_filter;
-    use function utils\send_error;
+    use function utils\utils\filter_request_method;
+    use function utils\utils\send_error;
+    use api\game;
+    use api\page;
 
-    request_method_filter('POST');
+    filter_request_method('POST');
     process_request();
 
+function get_response_template(): array
+{
+    return [
+        'ok' => false,
+        'err' => '',
+        'content' => array()
+    ];
+}
     function process_request(): void
     {
         $req = get_json_request();
@@ -19,9 +31,17 @@ namespace api {
         $response = array();
         switch ($req['api']) {
             case 'game':
-                require('handlers/game.php');
                 $response = game\handle_request($req);
                 break;
+
+            case 'page':
+                $response = page\handle_request($req);
+                break;
+            
+            default:
+                send_error(400, 'Invalid api');
+                exit();
+            break;
         }
         send_json_response($response);
     }
