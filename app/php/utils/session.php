@@ -1,6 +1,6 @@
 <?php
 
-namespace session {
+namespace utils\session {
 
     session_start();
 
