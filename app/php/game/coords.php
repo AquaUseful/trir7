@@ -4,13 +4,13 @@ namespace game {
 
     class Coords implements JsonSerializable
     {
-        private float $x;
-        private float $y;
+        private ?float $x = null;
+        private ?float $y = null;
 
-        public function __construct(float $x, float $y)
+        public function __construct(array $coords)
         {
-            $this->x = $x;
-            $this->y = $y;
+            $this->x = $coords[0];
+            $this->y = $coords[1];
         }
         public function set(float $x, float $y): void
         {
