@@ -1,6 +1,10 @@
 <?php
 
 namespace utils\session {
+    require_once('utils.php');
+    require_once('../game/game.php');
+    use game;
+    use utils;
 
     session_start();
 
@@ -13,6 +17,7 @@ namespace utils\session {
         $_SESSION['initialized'] = true;
         $_SESSION['login'] = '';
         $_SESSION['loggedIn'] = false;
+        $_SESSION['game'] = new game\GameState();
     }
 
     function check_session(): bool
@@ -24,5 +29,13 @@ namespace utils\session {
     {
         $_SESSION = array();
         session_destroy();
+    }
+
+    function filter_logged_in(): void
+    {
+        if (!$_SESSION['loggedIn']) {
+            utils\utils\send_error(403, 'Log in to access this page');
+            exit();
+        }
     }
 }
