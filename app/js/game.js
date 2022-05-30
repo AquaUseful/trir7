@@ -1,8 +1,7 @@
+import { call_api, hide } from './utils.js'
+
 document.addEventListener('DOMContentLoaded', async () => {
-    console.log('Lodaded game');
-    let ball = document.getElementById("ball");
-    let area = document.getElementById("game_area");
-    await make_draggable(ball, area, cb);
+    await init_game();
 });
 
 /**
@@ -83,12 +82,45 @@ async function make_draggable(element, limiter, drop_cb) {
  * 
  * @param {HTMLElement} element 
  */
-async function cb(element) {
+async function drop_cb(element) {
     let area = document.getElementById("game_area");
     let container = document.getElementById("game_container");
 
     let frac_pos = { x: element.offsetLeft / area.offsetWidth, y: element.offsetTop / area.offsetHeight };
 
-    console.log('Moved to:', frac_pos);
+    let resp = await call_api('game', 'move', { id: +element.id, pos: [frac_pos.x, frac_pos.y] });
+    if (resp['content']['win']) {
+        await get_balls();
+    }
+}
 
+async function init_game() {
+    let area = document.getElementById("game_area");
+    let container = document.getElementById("game_container");
+    let secret_ball = document.getElementById('secret_ball');
+    let container_desc = {
+        'pos': [container.offsetLeft / area.offsetWidth, container.offsetTop / area.offsetHeight],
+        'size': [container.offsetWidth / area.offsetWidth, container.offsetHeight / area.offsetHeight]
+    };
+    let ball_size = [secret_ball.offsetWidth / area.offsetWidth, secret_ball.offsetHeight / area.offsetHeight];
+    await hide(secret_ball);
+    let resp = await call_api('game', 'restart', { 'container': container_desc, 'ball_size': ball_size });
+    console.log(resp);
+    await get_balls();
+}
+
+async function get_balls() {
+    let balls = (await call_api('game', 'getballs', {}))['content'];
+    let container = document.getElementById('balls_container');
+    container.innerHTML = '';
+    for (let [i, ball] of Object.entries(balls)) {
+        let b_el = document.createElement('div');
+        b_el.classList.add('ball');
+        b_el.id = i;
+        b_el.style.left = (ball['pos'][0] * 100) + '%';
+        b_el.style.top = (ball['pos'][1] * 100) + '%';
+        b_el.innerHTML = ball['val'].join('+');
+        make_draggable(b_el, document.getElementById("game_area"), drop_cb);
+        container.appendChild(b_el);
+    }
 }
