@@ -1,0 +1,43 @@
+.layout-grid {
+    min-width: 100%;
+    min-height: 100%;
+    display: grid;
+    grid-template-areas: 'header'
+        'cont '
+        'footer';
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr auto;
+}
+
+.layout-grid>.layout-header {
+    border: 1px solid red;
+    grid-area: header;
+}
+
+.layout-grid>.layout-content {
+    border: 1px solid gray;
+    grid-area: cont;
+}
+
+.layout-grid>.layout-footer {
+    border: 1px solid blue;
+    grid-area: footer;
+}
+
+.layout-header>.header-grid {
+    width: 100%;
+    height: min-content;
+    display: grid;
+    grid-template-areas: 'logo tabs . name logout';
+    grid-template-rows: auto;
+    grid-template-columns: max-content max-content auto max-content max-content;
+    padding: 0.2%;
+    background-color: mediumpurple;
+}
+
+.header-grid>.header-logo {
+    grid-area: logo;
+    font-size: 150%;
+    font-weight: bold;
+    color: white;
+}

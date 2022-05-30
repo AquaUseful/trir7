@@ -1,0 +1,80 @@
+.game-ui {
+    min-width: 100%;
+    min-height: 100%;
+    display: grid;
+    grid-template-areas: 'timer area .'
+        'score area .'
+        '. area .'
+        'controls area .';
+    grid-template-rows: min-content min-content auto min-content;
+    grid-template-columns: 0.1fr auto min-content;
+}
+
+.game-ui>.game-timer {
+    grid-area: timer;
+}
+
+.game-ui>.game-score {
+    grid-area: score;
+}
+
+.game-ui>.game-controls {
+    grid-area: controls;
+}
+
+.game-ui>.game-area {
+    position: relative;
+    min-height: 100%;
+    min-width: 100%;
+    display: grid;
+    grid-area: area;
+    grid-template-areas:
+        '. . .'
+        '. container .'
+        '. . .';
+    grid-template-rows: auto 0.4fr 0.05fr;
+    grid-template-columns: 0.1fr auto 0.1fr;
+    background-color: #FFFFFF16;
+    /*border: 1px lime solid;*/
+}
+
+.game-area>.game-container {
+    grid-area: container;
+    border: 3px solid white;
+    border-radius: 20px;
+    background-color: #FFFFFF16;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container>.game-container-hint {
+    color: #000000A0;
+    font-size: 1500%;
+    width: max-content;
+    height: max-content;
+}
+
+.ball {
+    position: absolute;
+    background-color: #3700B3A0;
+    border: 2px solid #03DAC6A0;
+    border-radius: 50%;
+
+    /*width: 15%;*/
+    /* min-width: 5%;*/
+    max-width: 15%;
+
+    /*min-height: 15%;*/
+    /*max-height: 20%; */
+
+    padding: 2%;
+
+    aspect-ratio: 1 !important;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    user-select: none;
+}
