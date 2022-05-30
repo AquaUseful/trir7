@@ -9,17 +9,28 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/game.css">
     <script src="js/jquery.js"></script>
-    <script src="js/game.js"></script>
+    <script src="js/game.js" type="module"></script>
 </head>
 
 <body>
     <div class="layout-grid">
-        <div class="layout-header">HEADER</div>
+        <div class="layout-header">
+            <div class="header-grid">
+                <div class="header-logo"><span>ЛАБА 7</span></div>
+            </div>
+        </div>
         <div class="layout-content">
-            <div class="game-area" id="game_area">
-                <div class="ball"></div>
-                <div class="ball" id="ball"></div>
-                <div class="game-container" id="game_container">GAME CONTAINER
+            <div class="game-ui">
+                <div class="game-timer">TIMER</div>
+                <div class="game-score">SCORE</div>
+                <div class="game-controls">CONTROLS</div>
+                <div class="game-area" id="game_area">
+                    <div class="ball" id="secret_ball">0+0</div>
+                    <div id="balls_container">
+                    </div>
+                    <div class="game-container" id="game_container">
+                        <div class="game-container-hint">15</div>
+                    </div>
                 </div>
             </div>
         </div>
