@@ -41,7 +41,7 @@ namespace api\game {
     }
     function getscore(array $content): array
     {
-        return api\api\construct_response(true, '', $_SESSION['game']->get_score());
+        return api\api\construct_response(true, '', ['score' => $_SESSION['game']->get_score()]);
     }
 
     function gettime(array $content): array
