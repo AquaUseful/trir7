@@ -30,16 +30,22 @@
         </div>
         <div class="layout-content">
             <div class="game-ui">
-                <div class="game-timer">TIMER</div>
-                <div class="game-score">SCORE</div>
+                <div class="game-timer">
+                    <span>Время</span>
+                    <span id="timer_seconds">666</span>
+                </div>
+                <div class="game-score">
+                    <span>Очки</span>
+                    <span id="score">0</span>
+                </div>
                 <div class="game-controls">
-                    <input type="button" value="ВЫХОД" class="btn red">
+                    <input type="button" value="ВЫХОД" class="btn red" id="endgame_btn">
                 </div>
                 <div class="game-area" id="game_area">
                     <div class="ball" id="secret_ball">0+0</div>
                     <div id="balls_container">
                     </div>
-                    <div class="game-container" id="game_container">
+                    <div class="game-container flex-center" id="game_container">
                         <div class="game-container-hint">15</div>
                     </div>
                 </div>

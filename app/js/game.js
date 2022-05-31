@@ -89,6 +89,10 @@ async function drop_cb(element) {
     let frac_pos = { x: element.offsetLeft / area.offsetWidth, y: element.offsetTop / area.offsetHeight };
 
     let resp = await call_api('game', 'move', { id: +element.id, pos: [frac_pos.x, frac_pos.y] });
+
+    await update_timer();
+    await update_score();
+
     if (resp['content']['win']) {
         await get_balls();
     }
@@ -104,8 +108,11 @@ async function init_game() {
     };
     let ball_size = [secret_ball.offsetWidth / area.offsetWidth, secret_ball.offsetHeight / area.offsetHeight];
     await hide(secret_ball);
+
+    document.getElementById('endgame_btn').addEventListener('click', end_game);
+
     let resp = await call_api('game', 'restart', { 'container': container_desc, 'ball_size': ball_size });
-    console.log(resp);
+    await init_game_timer();
     await get_balls();
 }
 
@@ -123,4 +130,27 @@ async function get_balls() {
         make_draggable(b_el, document.getElementById("game_area"), drop_cb);
         container.appendChild(b_el);
     }
+}
+
+async function init_game_timer() {
+    setInterval(update_timer, 1000);
+}
+
+async function end_game() {
+    document.location.replace('endgame.html');
+}
+
+async function update_timer() {
+    let time = (await call_api('game', 'gettime', {}))['content']['time'];
+    document.getElementById('timer_seconds').innerHTML = Math.round(time * 10) / 10;
+    if (time <= 0) {
+        await end_game();
+    }
+}
+
+async function update_score() {
+    let score = (await call_api('game', 'getscore', {}))['content']['score'];
+    /*let resp = await call_api('game', 'getscore', {});
+    console.log(resp);*/
+    document.getElementById('score').innerHTML = score;
 }

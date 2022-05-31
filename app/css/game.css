@@ -8,14 +8,31 @@
         'controls area .';
     grid-template-rows: max-content max-content 1fr max-content;
     grid-template-columns: max-content auto max-content;
+    row-gap: 50px;
 }
 
 .game-ui>.game-timer {
     grid-area: timer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 200%;
+    background-color: #FFFFFF16;
+    padding: 8px;
 }
+
+.game-timer>.header {}
 
 .game-ui>.game-score {
     grid-area: score;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 200%;
+    background-color: #FFFFFF16;
+    padding: 8px;
 }
 
 .game-ui>.game-controls {
@@ -44,9 +61,6 @@
     border: 3px solid white;
     border-radius: 20px;
     background-color: #FFFFFF16;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .game-container>.game-container-hint {
