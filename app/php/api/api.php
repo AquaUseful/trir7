@@ -3,6 +3,8 @@
 namespace api\api {
     require_once('../utils/utils.php');
     require_once('../utils/session.php');
+    require_once('handlers/session.php');
+    require_once('handlers/form.php');
     require_once('handlers/game.php');
     require_once('handlers/page.php');
     use utils;
@@ -35,10 +37,13 @@ namespace api\api {
                 $response = api\page\handle_request($req);
                 break;
 
+            case 'session':
+                $response = api\session\handle_request($req);
+                break;
+
             default:
                 utils\utils\send_error(400, 'Invalid api');
                 exit();
-                break;
         }
         send_json_response($response);
     }
