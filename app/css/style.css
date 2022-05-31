@@ -20,6 +20,11 @@ body {
     border: none;
 }
 
+.btn.big {
+    font-size: 300%;
+    padding: 15px;
+}
+
 .btn.red {
     background-color: #E53935;
     color: #FFFFFF;
@@ -48,4 +53,25 @@ body {
 .btn.btn.grey:active {
     background-color: #F5F5F5;
     color: #000000;
+}
+
+.btn.green {
+    background-color: #43A047;
+    color: #000000;
+}
+
+.btn.green:hover {
+    background-color: #1B5E20;
+    columns: #FFF;
+}
+
+.btn.green:active {
+    background-color: #C8E6C9;
+    color: #000;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
