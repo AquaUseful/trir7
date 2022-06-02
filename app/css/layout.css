@@ -27,13 +27,13 @@
 .layout-header>.header-grid {
     height: min-content;
     display: grid;
-    grid-template-areas: 'logo tabs . name logout';
+    grid-template-areas: 'logo tabs . login logout';
     grid-template-rows: auto;
     grid-template-columns: max-content max-content auto max-content max-content;
     background-color: mediumpurple;
     box-sizing: content-box;
     padding: 0.5%;
-    column-gap: 5px;
+    column-gap: 1%;
 }
 
 .header-grid>.header-logo {
@@ -50,6 +50,11 @@
     align-items: center;
     width: max-content;
     height: max-content;
+}
+
+.header-grid>.header-login {
+    grid-area: login;
+    color: white;
 }
 
 .header-grid>.header-tabs {
