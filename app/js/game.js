@@ -90,11 +90,9 @@ async function drop_cb(element) {
 
     let resp = await call_api('game', 'move', { id: +element.id, pos: [frac_pos.x, frac_pos.y] });
 
-    await update_timer();
-    await update_score();
-
     if (resp['content']['win']) {
         await get_balls();
+        await update_score();
     }
 }
 
@@ -109,11 +107,15 @@ async function init_game() {
     let ball_size = [secret_ball.offsetWidth / area.offsetWidth, secret_ball.offsetHeight / area.offsetHeight];
     await hide(secret_ball);
 
-    document.getElementById('endgame_btn').addEventListener('click', end_game);
+    document.getElementById('endgame_btn').addEventListener('click', timout);
 
     let resp = await call_api('game', 'restart', { 'container': container_desc, 'ball_size': ball_size });
     await init_game_timer();
     await get_balls();
+
+    let lives = (await call_api('game', 'getlives', {}))['content']['lives'];
+    await update_lives(lives);
+    await update_timer();
 }
 
 async function get_balls() {
@@ -136,15 +138,22 @@ async function init_game_timer() {
     setInterval(update_timer, 1000);
 }
 
-async function end_game() {
-    document.location.replace('endgame.html');
+async function timout() {
+    let lives = (await call_api('game', 'getlives', {}))['content']['lives'];
+    if (lives <= 0) {
+        document.location.replace('endgame.html');
+    }
+    console.log('Lives', lives);
+    await update_lives(lives);
+    await get_balls();
+    await update_timer();
 }
 
 async function update_timer() {
-    let time = (await call_api('game', 'gettime', {}))['content']['time'];
-    document.getElementById('timer_seconds').innerHTML = Math.round(time * 10) / 10;
+    let time = (await call_api('game', 'update', {}))['content']['time'];
+    document.getElementById('timer_seconds').innerHTML = Math.round(time);
     if (time <= 0) {
-        await end_game();
+        await timout();
     }
 }
 
@@ -153,4 +162,21 @@ async function update_score() {
     /*let resp = await call_api('game', 'getscore', {});
     console.log(resp);*/
     document.getElementById('score').innerHTML = score;
+}
+
+/**
+ * 
+ * @param {number} lives 
+ */
+async function update_lives(lives) {
+    let container = document.getElementById('lives_container');
+    container.innerHTML = '';
+    for (let i = 0; i < lives; ++i) {
+        let heart = document.createElement('div');
+        heart.classList.add('heart');
+        if (i === (lives - 1)) {
+            heart.classList.add('beating');
+        }
+        container.appendChild(heart);
+    }
 }

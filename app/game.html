@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div class="layout-grid">
+    <div class="layout-grid noselect">
         <div class="layout-header">
             <div class="header-grid">
                 <div class="header-logo flex-center"><span>ЛАБА 7</span></div>
@@ -27,22 +27,30 @@
                 </div>
                 <div class="header-logout">
                     <div class="cell">
-                        <input type="button" value="ВЫЙТИ" class="btn grey">
+                        <input type="button" value="ВЫЙТИ" class="btn grey" id="header_logout_btn">
                     </div>
                 </div>
             </div>
         </div>
         <div class="layout-content">
             <div class="game-ui">
-                <div class="game-timer">
+                <div class="sidebar-element game-timer">
                     <span>Время</span>
                     <span id="timer_seconds">666</span>
                 </div>
-                <div class="game-score">
+                <div class="sidebar-element game-score">
                     <span>Очки</span>
                     <span id="score">0</span>
                 </div>
-                <div class="game-controls">
+                <div class="sidebar-element game-lives">
+                    <span>Жизни</span>
+                    <div class="lives" id="lives_container">
+                        <div class="heart beating"></div>
+                        <div class="heart"></div>
+                        <div class="heart"></div>
+                    </div>
+                </div>
+                <div class="sidebar-element game-controls">
                     <input type="button" value="ВЫХОД" class="btn red" id="endgame_btn">
                 </div>
                 <div class="game-area" id="game_area">
@@ -55,7 +63,7 @@
                 </div>
             </div>
         </div>
-        <div class="layout-footer">FOOTER</div>
+        <div class="layout-footer"></div>
     </div>
 </body>
 

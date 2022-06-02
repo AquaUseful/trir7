@@ -49,6 +49,18 @@ namespace api\game {
         $time_left = $_SESSION['game']->get_end_time() - microtime(true);
         return api\api\construct_response(true, '', ['time' => $time_left]);
     }
+    function update(array $content): array
+    {
+        $time_left = $_SESSION['game']->get_end_time() - microtime(true);
+        $_SESSION['game']->update();
+        return api\api\construct_response(true, '', ['time' => $time_left]);
+    }
+
+    function getlives(array $content): array
+    {
+        $lives = $_SESSION['game']->get_lives();
+        return api\api\construct_response(true, '', ['lives' => $lives]);
+    }
 
     function handle_request(array $request): array
     {
@@ -64,6 +76,10 @@ namespace api\game {
                 return getscore($request['content']);
             case 'gettime':
                 return gettime($request['content']);
+            case 'update':
+                return update($request['content']);
+            case 'getlives':
+                return getlives($request['content']);
             default:
                 utils\utils\send_error(400, "Invalid action for game api");
                 exit();
