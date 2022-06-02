@@ -1,0 +1,41 @@
+{
+    "id": "login",
+    "header": "Вход",
+    "fields": {
+        "login": {
+            "displayName": "Логин",
+            "type": "text"
+        },
+        "password": {
+            "displayName": "Пароль",
+            "type": "password"
+        }
+    },
+    "buttons": {
+        "submit": {
+            "displayName": "Войти"
+        }
+    },
+    "links": {
+        "register": {
+            "displayName": "Регистрация",
+            "href": "register.html"
+        }
+    },
+    "validators": {
+        "login": [
+            {
+                "type": "regex",
+                "regex": "/^.+$/",
+                "displayError": "Введите логин"
+            }
+        ],
+        "password": [
+            {
+                "type": "regex",
+                "regex": "/^.+$/",
+                "displayError": "Введите пароль"
+            }
+        ]
+    }
+}

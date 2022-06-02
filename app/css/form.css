@@ -1,0 +1,42 @@
+.form-grid {
+    min-width: 100%;
+    min-height: 100%;
+    display: grid;
+    grid-template-areas: '. . .'
+        '. form .'
+        ' . . .';
+    grid-template-rows: auto 0.5fr auto;
+    grid-template-columns: auto 0.3fr auto;
+}
+
+.form-grid>.form {
+    grid-area: form;
+}
+
+.form-error {
+    font-size: small;
+    color: brown;
+    min-height: 20px;
+}
+
+.form-field {
+    margin-bottom: 0px;
+}
+
+.form-link {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.form-cont {
+    min-width: 50%;
+}
+
+.form-label {
+    margin-top: 10px;
+}
+
+.form-divcont {
+    margin-bottom: 10px;
+    max-width: 50%;
+}

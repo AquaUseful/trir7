@@ -41,6 +41,10 @@ namespace api\api {
                 $response = api\session\handle_request($req);
                 break;
 
+            case 'form':
+                $response = api\form\handle_request($req);
+                break;
+
             default:
                 utils\utils\send_error(400, 'Invalid api');
                 exit();
