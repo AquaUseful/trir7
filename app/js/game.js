@@ -107,7 +107,7 @@ async function init_game() {
     let ball_size = [secret_ball.offsetWidth / area.offsetWidth, secret_ball.offsetHeight / area.offsetHeight];
     await hide(secret_ball);
 
-    document.getElementById('endgame_btn').addEventListener('click', timout);
+    //document.getElementById('endgame_btn').addEventListener('click', async () => { document.location.replace('endgame.html') });
 
     let resp = await call_api('game', 'restart', { 'container': container_desc, 'ball_size': ball_size });
     await init_game_timer();
