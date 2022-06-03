@@ -1,4 +1,4 @@
-<table>
+<table class="table">
 <tr>
     <th>Пользователь</th>
     <th>Рекорд</th>
