@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/game.css">
+    <title>ЛАБА 7 Игра</title>
+    <script src="js/jquery.js"></script>
+    <script src="js/game.js" type="module"></script>
+    <script src="js/header.js" type="module"></script>
+</head>
+
+<body>
+    <div class="layout-grid noselect">
+        <div class="layout-header">
+            <div class="header-grid">
+                <div class="header-logo flex-center"><span>ЛАБА 7</span></div>
+                <div class="header-tabs">
+                    <a href="#" class="tab-link active">Игра</a>
+                    <a href="records.html" class="tab-link">Рекорды</a>
+                    <a href="rules.html" class="tab-link">Правила</a>
+                </div>
+                <div class="header-login flex-center">
+                    <span id="header_login"></span>
+                </div>
+                <div class="header-logout">
+                    <div class="cell">
+                        <input type="button" value="ВЫЙТИ" class="btn grey" id="header_logout_btn">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layout-content">
+            <div class="game-ui">
+                <div class="sidebar-element game-timer">
+                    <span>Время</span>
+                    <span id="timer_seconds">666</span>
+                </div>
+                <div class="sidebar-element game-score">
+                    <span>Очки</span>
+                    <span id="score">0</span>
+                </div>
+                <div class="sidebar-element game-lives">
+                    <span>Жизни</span>
+                    <div class="lives" id="lives_container">
+                        <div class="heart beating"></div>
+                        <div class="heart"></div>
+                        <div class="heart"></div>
+                    </div>
+                </div>
+                <div class="game-area" id="game_area">
+                    <div class="ball" id="secret_ball">0+0</div>
+                    <div id="balls_container">
+                    </div>
+                    <div class="game-container flex-center" id="game_container">
+                        <div class="game-container-hint">15</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layout-footer"></div>
+    </div>
+</body>
+
+</html>

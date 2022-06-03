@@ -1,0 +1,25 @@
+.rules-grid {
+    min-width: 100%;
+    min-height: 100%;
+    display: grid;
+    grid-template-areas: '. . .'
+        '. header .'
+        ' . rules .'
+        '. . .';
+    grid-template-rows: auto max-content 0.5fr auto;
+    grid-template-columns: auto 0.3fr auto;
+    row-gap: 5%;
+    background-color: #000000CF;
+}
+
+.rules-grid>.header {
+    grid-area: header;
+    text-align: center;
+    font-size: 220%;
+    font-weight: bold;
+}
+
+.rules-grid>.rules {
+    grid-area: rules;
+    font-size: 120%;
+}

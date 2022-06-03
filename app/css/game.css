@@ -1,0 +1,136 @@
+.game-ui {
+    min-width: 100%;
+    min-height: 100%;
+    display: grid;
+    grid-template-areas: '. area .'
+        'timer area .'
+        'score area .'
+        'lives area .'
+        '. area .'
+        'controls area .';
+    grid-template-rows: auto min-content min-content min-content auto min-content;
+    grid-template-columns: max-content auto max-content;
+    row-gap: 3%;
+    background-color: #000000CF;
+}
+
+.game-ui>.sidebar-element {
+    background-color: #000000F0;
+    padding: 8px;
+    font-size: 200%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.game-ui>.sidebar-element.game-timer {
+    grid-area: timer;
+}
+
+.game-ui>.sidebar-element.game-score {
+    grid-area: score;
+
+}
+
+.game-ui>.sidebar-element.game-lives {
+    grid-area: lives;
+}
+
+.game-lives>.lives {
+    width: 100%;
+    display: grid;
+    grid-template-areas: '. . .';
+    grid-auto-flow: column;
+    row-gap: 5%;
+}
+
+.game-ui>.sidebar-element.game-controls {
+    grid-area: controls;
+}
+
+.game-ui>.game-area {
+    position: relative;
+    min-height: 100%;
+    min-width: 100%;
+    display: grid;
+    grid-area: area;
+    grid-template-areas:
+        '. . .'
+        '. container .'
+        '. . .';
+    grid-template-rows: auto 40% 5%;
+    grid-template-columns: 12% auto 12%;
+    background-color: #00000016;
+    /*border: 1px lime solid;*/
+}
+
+.game-area>.game-container {
+    grid-area: container;
+    border: 3px solid white;
+    border-radius: 20px;
+    background-color: #FFFFFF16;
+    background-image: url(../assets/img/container.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.game-container>.game-container-hint {
+    color: #000000f0;
+    font-size: 1500%;
+    width: max-content;
+    height: max-content;
+    user-select: none;
+}
+
+.ball {
+    position: absolute;
+    /*  background-color: #F57C00A0;*/
+    border: none;
+    max-width: 15%;
+
+    padding: 2%;
+
+    aspect-ratio: 1 !important;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    user-select: none;
+
+    background-image: url(../assets/img/coin.png);
+    background-position: center;
+    background-size: contain;
+    color: #000;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1.0);
+    }
+
+    50% {
+        transform: scale(0.75);
+    }
+
+    100% {
+        transform: scale(1.0);
+    }
+}
+
+.heart {
+    display: inline-block;
+    width: 100%;
+    aspect-ratio: 1;
+    border-image: radial-gradient(red 69%, #0000 70%) 84.5% fill/100%;
+    clip-path: polygon(-41% 0, 50% 91%, 141% 0);
+}
+
+.heart.beating {
+    animation-name: heartbeat;
+    animation-timing-function: ease-in-out;
+    animation-duration: 0.7s;
+    animation-iteration-count: infinite;
+}

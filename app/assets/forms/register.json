@@ -1,0 +1,57 @@
+{
+    "id": "add",
+    "header": "Регистрация",
+    "fields": {
+        "login": {
+            "displayName": "Логин",
+            "type": "text"
+        },
+        "password": {
+            "displayName": "Пароль",
+            "type": "password"
+        },
+        "password_again": {
+            "displayName": "Подтверждение пароля",
+            "type": "password"
+        }
+    },
+    "buttons": {
+        "submit": {
+            "displayName": "Зарегистрироваться"
+        }
+    },
+    "links": {
+        "register": {
+            "displayName": "Войти",
+            "href": "login.html"
+        }
+    },
+    "validators": {
+        "login": [
+            {
+                "type": "regex",
+                "regex": "/^.{3,30}$/u",
+                "displayError": "От 3 до 30 символов"
+            },
+            {
+                "type": "regex",
+                "regex": "/^[a-zA-Z0-9]{3,30}$/u",
+                "displayError": "Только латиница и цифры"
+            }
+        ],
+        "password": [
+            {
+                "type": "regex",
+                "regex": "/^.{8,}$/u",
+                "displayError": "Минимум 8 символов"
+            }
+        ],
+        "password_again": [
+            {
+                "type": "match",
+                "matchField": "password",
+                "displayError": "Пароли не совпадают"
+            }
+        ]
+    }
+}

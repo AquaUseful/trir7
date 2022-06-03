@@ -1,0 +1,14 @@
+{
+    "tables": {
+        "user": {
+            "fields": [
+                "login",
+                "password",
+                "record"
+            ],
+            "params": {
+                "key": "login"
+            }
+        }
+    }
+}
