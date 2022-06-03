@@ -10,7 +10,7 @@ $err_suffix='_err';
     <span class="form-label"><?php echo($displayName); ?></span> <br>
     <input class="form-field" type="<?php echo($type); ?>"
         id="<?php echo($id.$input_suffix); ?>"> <br>
-        <span class="form-error" id="<?php echo($id.$err_suffix)?>"></span> 
+        <div class="form-error" id="<?php echo($id.$err_suffix)?>"></div> 
 </div>
 
 <?php

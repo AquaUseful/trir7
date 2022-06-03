@@ -2,7 +2,7 @@
 assert(isset($form));
 ?>
 <form id="<?php echo($form['id']); ?>">
-    <h2><?php echo($form['header']);?>
+    <h2><?php echo($form['header']); ?>
     </h2>
     <?php
 foreach ($form['fields'] as $id => $field) {
@@ -11,8 +11,8 @@ foreach ($form['fields'] as $id => $field) {
     require('form_elements/field.php');
 }
 ?>
-    <span id="general_error" class="gen-err"></span>
-    <span id="general_info" class="gen-inf"></span>
+    <div id="general_error" class="gen-err"></div>
+    <div id="general_info" class="gen-inf"></div>
     <?php
 foreach ($form['buttons'] as $id => $button) {
     $displayName = $button['displayName'];
