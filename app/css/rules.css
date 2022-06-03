@@ -7,7 +7,7 @@
         ' . rules .'
         '. . .';
     grid-template-rows: auto max-content 0.5fr auto;
-    grid-template-columns: auto 0.3fr auto;
+    grid-template-columns: auto 0.5fr auto;
     row-gap: 5%;
     background-color: #000000CF;
 }
