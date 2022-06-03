@@ -17,6 +17,9 @@
 .layout-grid>.layout-content {
     /*   border: 1px solid gray; */
     grid-area: cont;
+    background-image: url(../assets/img/background.jpg);
+    background-position: center;
+    background-size: cover;
 }
 
 .layout-grid>.layout-footer {
@@ -30,7 +33,7 @@
     grid-template-areas: 'logo tabs . login logout';
     grid-template-rows: auto;
     grid-template-columns: max-content max-content auto max-content max-content;
-    background-color: mediumpurple;
+    background-color: #1A237e;
     box-sizing: content-box;
     padding: 0.5%;
     column-gap: 1%;

@@ -9,14 +9,20 @@
     grid-template-rows: auto max-content max-content auto;
     grid-template-columns: auto 0.3fr auto;
     row-gap: 5%;
+    background-color: #000000CF;
 }
 
 .index-grid>.splash {
     grid-area: splash;
     font-size: 2000%;
+    color: #0000;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-image: url(../assets/img/index_splash.jpg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .index-grid>.controls {
