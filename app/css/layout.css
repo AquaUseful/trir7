@@ -95,3 +95,8 @@
     justify-content: center;
     align-items: center;
 }
+
+img.egg {
+    height: 70%;
+    aspect-ratio: initial;
+}

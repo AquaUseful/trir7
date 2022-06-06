@@ -6,7 +6,7 @@
         '. table . '
         '. . .';
     grid-template-rows: 0.1fr auto 0.1fr;
-    grid-template-columns: auto 0.2fr auto;
+    grid-template-columns: auto 0.4fr auto;
     background-color: #000000CF;
 }
 
@@ -31,4 +31,8 @@ th {
 
 .record-grid>.table>table.table tr:nth-child(even) {
     background-color: #FFFFFFA0;
+}
+
+.record-grid>.table>table.table tr.highlight {
+    background-color: #76FF03a0;
 }

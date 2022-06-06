@@ -93,6 +93,7 @@ async function drop_cb(element) {
     if (resp['content']['win']) {
         await get_balls();
         await update_score();
+        await update_target();
     }
 }
 
@@ -116,6 +117,7 @@ async function init_game() {
     let lives = (await call_api('game', 'getlives', {}))['content']['lives'];
     await update_lives(lives);
     await update_timer();
+    await update_target();
 }
 
 async function get_balls() {
@@ -147,6 +149,7 @@ async function timout() {
     await update_lives(lives);
     await get_balls();
     await update_timer();
+    await update_target();
 }
 
 async function update_timer() {
@@ -179,4 +182,10 @@ async function update_lives(lives) {
         }
         container.appendChild(heart);
     }
+}
+
+async function update_target() {
+    let container = document.getElementById('game_target');
+    let target = (await call_api('game', 'gettarget', {}))['content']['target'];
+    container.innerHTML = target;
 }

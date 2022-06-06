@@ -61,6 +61,11 @@ namespace api\game {
         $lives = $_SESSION['game']->get_lives();
         return api\api\construct_response(true, '', ['lives' => $lives]);
     }
+    function gettarget(array $content): array
+    {
+        $target = $_SESSION['game']->get_target();
+        return api\api\construct_response(true, '', ['target' => $target]);
+    }
 
     function handle_request(array $request): array
     {
@@ -80,6 +85,8 @@ namespace api\game {
                 return update($request['content']);
             case 'getlives':
                 return getlives($request['content']);
+            case 'gettarget':
+                return gettarget($request['content']);
             default:
                 utils\utils\send_error(400, "Invalid action for game api");
                 exit();
